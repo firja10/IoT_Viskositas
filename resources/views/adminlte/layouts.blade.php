@@ -185,7 +185,7 @@ for (var i = 0; i < data.length; i++) {
 
 var motor_data1 = {
               data : floatData,
-              color: '#ffff',
+              color: '#0000FF',
               label:'Kecepatan',
             }
 
@@ -200,7 +200,9 @@ var motor_data1 = {
 // $.plot("#data_kecepatan_motor", [floatData, floatData2], {
   
   document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
-  $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
+  // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
+
+    $.plot("#data_kecepatan_motor", [motor_data1], {
     series: {
         lines: { show: true, lineWidth: 2 },
         points: { show: true },
@@ -231,10 +233,14 @@ var motor_data1 = {
                 },
 
       grid: {
-    markings: [
-      {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
-      {yaxis: { from: 10, to: 100},color: "#198754"}
-    ]}
+    // markings: [
+    //   {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+    //   {yaxis: { from: 10, to: 100},color: "#198754"}
+    // ]
+  
+  
+  
+  }
 });
 
 
@@ -257,7 +263,7 @@ setInterval(function() {
 
               var motor_data1 = {
               data : floatData,
-              color: '#ffff',
+              color: '#0000FF',
               label:'Kecepatan',
             }
 
@@ -271,7 +277,10 @@ setInterval(function() {
               document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
 
                 // Update the Flot chart with the new data
-                $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
+                // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
+
+                $.plot("#data_kecepatan_motor", [motor_data1],
+
                 // $.plot("#data_kecepatan_motor", [floatData, floatData2],
                 {
                   series: {
@@ -305,10 +314,12 @@ setInterval(function() {
 
 
                     grid: {
-                      markings: [
-                          {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
-                          {yaxis: { from: 10, to: 100},color: "#198754"}
-                      ]}
+                      // markings: [
+                      //     {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+                      //     {yaxis: { from: 10, to: 100},color: "#198754"}
+                      // ]
+                    
+                    }
 
 
                 }
@@ -355,7 +366,7 @@ for (var i = 0; i < data_current.length; i++) {
 
 var motor_data1_current = {
               data : floatDataCurrent,
-              color: '#ffff',
+              color: '#198754',
               label:'Kecepatan',
             }
 
@@ -370,7 +381,10 @@ var motor_data1_current = {
 // $.plot("#data_kecepatan_motor", [floatData, floatData2], {
   document.getElementById('kuat_arus').innerHTML = floatDataCurrent[floatDataCurrent.length-1][1];
 
-  $.plot("#data_kuat_arus", [motor_data1_current, motor_data2_current], {
+  // $.plot("#data_kuat_arus", [motor_data1_current, motor_data2_current], {
+
+    $.plot("#data_kuat_arus", [motor_data1_current], {
+
     series: {
         lines: { show: true, lineWidth: 2 },
         points: { show: true },
@@ -401,10 +415,16 @@ var motor_data1_current = {
                 },
 
       grid: {
-    markings: [
-      {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
-      {yaxis: { from: 10, to: 100},color: "#198754"}
-    ]}
+    // markings: [
+    //   {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+    //   {yaxis: { from: 10, to: 100},color: "#198754"}
+    // ]
+
+    // markings: [
+    //   {color:"#198754"}
+    // ]
+  
+  }
 });
 
 
@@ -427,7 +447,7 @@ setInterval(function() {
 
               var motor_data1_current = {
               data : floatData,
-              color: '#ffff',
+              color: '#198754',
               label:'Kuat Arus',
             }
 
@@ -441,7 +461,11 @@ setInterval(function() {
               document.getElementById('kuat_arus').innerHTML = floatDataCurrent[floatDataCurrent.length-1][1];
 
                 // Update the Flot chart with the new data
-                $.plot("#data_kuat_arus", [motor_data1_current, motor_data2_current],
+                // $.plot("#data_kuat_arus", [motor_data1_current, motor_data2_current],
+
+                $.plot("#data_kuat_arus", [motor_data1_current],
+
+
                 // $.plot("#data_kecepatan_motor", [floatData, floatData2],
                 {
                   series: {
@@ -475,10 +499,12 @@ setInterval(function() {
 
 
                     grid: {
-                      markings: [
-                          {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
-                          {yaxis: { from: 10, to: 100},color: "#198754"}
-                      ]}
+                      // markings: [
+                      //     {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+                      //     {yaxis: { from: 10, to: 100},color: "#198754"}
+                      // ]
+                    
+                    }
 
 
                 }
@@ -530,7 +556,7 @@ for (var i = 0; i < data_voltage.length; i++) {
 
 var motor_data1_voltage = {
               data : floatDataVoltage,
-              color: '#ffff',
+              color: '#FF0000',
               label:'Tegangan',
             }
 
@@ -556,7 +582,9 @@ document.getElementById('tegangan').innerHTML = floatDataVoltage[floatDataVoltag
 
 
 
-  $.plot("#data_tegangan", [motor_data1_voltage, motor_data2_voltage], {
+  // $.plot("#data_tegangan", [motor_data1_voltage, motor_data2_voltage], {
+
+    $.plot("#data_tegangan", [motor_data1_voltage], {
     series: {
         lines: { show: true, lineWidth: 2 },
         points: { show: true },
@@ -587,10 +615,12 @@ document.getElementById('tegangan').innerHTML = floatDataVoltage[floatDataVoltag
                 },
 
       grid: {
-    markings: [
-      {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
-      {yaxis: { from: 10, to: 100},color: "#198754"}
-    ]}
+    // markings: [
+    //   {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+    //   {yaxis: { from: 10, to: 100},color: "#198754"}
+    // ]
+  
+  }
 });
 
 
@@ -613,7 +643,7 @@ setInterval(function() {
 
               var motor_data1_voltage = {
               data : floatData,
-              color: '#ffff',
+              color: '#FF0000',
               label:'Tegangan',
             }
 
@@ -635,7 +665,10 @@ setInterval(function() {
            
 
                 // Update the Flot chart with the new data
-                $.plot("#data_Tegangan_motor", [motor_data1_voltage, motor_data2_voltage],
+                // $.plot("#data_Tegangan_motor", [motor_data1_voltage, motor_data2_voltage],
+
+                $.plot("#data_Tegangan_motor", [motor_data1_voltage],
+
                 // $.plot("#data_Tegangan_motor", [floatData, floatData2],
                 {
                   series: {
@@ -669,10 +702,12 @@ setInterval(function() {
 
 
                     grid: {
-                      markings: [
-                          {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
-                          {yaxis: { from: 10, to: 100},color: "#198754"}
-                      ]}
+                      // markings: [
+                      //     {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+                      //     {yaxis: { from: 10, to: 100},color: "#198754"}
+                      // ]
+                    
+                    }
 
 
                 }
