@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('adminlte.index');
 });
 
+Route::get('/home', function () {
+    return view('adminlte.index');
+});
+
+
 
 /// Kecepatan
 Route::get('/kecepatan_motor', function () {
