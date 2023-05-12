@@ -13,5 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/store_data_kuat_arus',
+        '/store_data_tegangan',
+        '/store_data_kecepatan_motor',
     ];
 }

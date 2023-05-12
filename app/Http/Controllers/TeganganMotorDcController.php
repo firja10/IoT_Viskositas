@@ -32,6 +32,23 @@ class TeganganMotorDcController extends Controller
     public function store(Request $request)
     {
         //
+
+        $v_ref = $request->v_ref;
+        $v = $request->v;
+
+        $tegangan = new tegangan_motor_dc();
+        $tegangan->v_ref = $request->v_ref;
+        $tegangan->v = $request->v;
+
+        $error_v = $v - $v_ref;
+
+        $tegangan->error_v = $error_v;
+        $tegangan->ref_error_v = $request->ref_error_v;
+        $tegangan->save();
+
+        return "Tegangan Berhasil disave";
+
+
     }
 
     /**

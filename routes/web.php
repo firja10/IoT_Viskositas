@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
+/// Menampilkan Data
+
 Route::get('/', function () {
     return view('adminlte.index');
 });
@@ -30,6 +33,7 @@ Route::get('/kecepatan_motor', function () {
 });
 
 
+
 Route::get('/data_kecepatan_motor', [App\Http\Controllers\KecepatanMotorDcController::class, 'index'])->name('data_kecepatan_motor');
 
 Route::get('/data_kuat_arus', [App\Http\Controllers\KuatArusMotorDcController::class, 'index'])->name('data_kuat_arus');
@@ -37,6 +41,16 @@ Route::get('/data_kuat_arus', [App\Http\Controllers\KuatArusMotorDcController::c
 Route::get('/data_tegangan', [App\Http\Controllers\TeganganMotorDcController::class, 'index'])->name('data_tegangan');
 
 Route::get('/data_viskositas', [App\Http\Controllers\ViskositasController::class, 'index'])->name('data_viskositas');
+
+
+
+/// Store Data
+Route::post('/store_data_kecepatan_motor', [App\Http\Controllers\KecepatanMotorDcController::class, 'store'])->name('store_data_kecepatan_motor');
+Route::post('/store_data_kuat_arus', [App\Http\Controllers\KuatArusMotorDcController::class, 'store'])->name('store_data_kuat_arus');
+Route::post('/store_data_tegangan', [App\Http\Controllers\TeganganMotorDcController::class, 'store'])->name('store_data_tegangan');
+
+
+
 
 
 

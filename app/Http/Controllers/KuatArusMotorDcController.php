@@ -34,6 +34,21 @@ class KuatArusMotorDcController extends Controller
     public function store(Request $request)
     {
         //
+
+        $i_ref = $request->i_ref;
+        $i = $request->i;
+
+        $kuat_arus = new kuat_arus_motor_dc();
+        $kuat_arus->i_ref = $request->i_ref;
+        $kuat_arus->i = $request->i;
+
+        $error_i = $i - $i_ref;
+
+        $kuat_arus->error_i = $error_i;
+        $kuat_arus->ref_error_i = $request->ref_error_i;
+        $kuat_arus->save();
+
+        return "Kuat Arus Berhasil disave";
     }
 
     /**
