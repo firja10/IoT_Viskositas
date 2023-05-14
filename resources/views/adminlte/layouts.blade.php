@@ -356,11 +356,11 @@ setInterval(function() {
 function createFlotChartCurrent(data_current) {
   
   var floatDataCurrent = [];
-  var floatDataCurrent2 = [];
+  // var floatDataCurrent2 = [];
 
 for (var i = 0; i < data_current.length; i++) {
   floatDataCurrent.push([data_current[i].id, data_current[i].i]);
-  floatDataCurrent.push([data_current[i].id, data_current[i].i_ref]);
+  // floatDataCurrent.push([data_current[i].id, data_current[i].i_ref]);
 }
 
 
@@ -371,11 +371,11 @@ var motor_data1_current = {
             }
 
 
-              var motor_data2_current = {
-                data : floatDataCurrent2,
-              color: '#800000',
-              label:'Kuat Arus Referensi',
-              }
+              // var motor_data2_current = {
+              //   data : floatDataCurrent2,
+              // color: '#800000',
+              // label:'Kuat Arus Referensi',
+              // }
 
 // Create the Flot chart using the formatted data
 // $.plot("#data_kecepatan_motor", [floatData, floatData2], {
@@ -437,11 +437,11 @@ setInterval(function() {
             success: function(data_current) {
                 // Parse the JSON object and format it correctly for use in a Flot chart
                 var floatDataCurrent = [];
-                var floatDataCurrent2 = [];
+                // var floatDataCurrent2 = [];
 
               for (var i = 0; i < data_current.length; i++) {
                   floatDataCurrent.push([data_current[i].id, data_current[i].i]);
-                  floatDataCurrent2.push([data_current[i].id, data_current[i].i_ref]);
+                  // floatDataCurrent2.push([data_current[i].id, data_current[i].i_ref]);
               }
 
 
@@ -452,11 +452,11 @@ setInterval(function() {
             }
 
 
-              var motor_data2_current = {
-                data : floatData2,
-              color: '#800000',
-              label:'Kuat Arus Referensi',
-              }
+              // var motor_data2_current = {
+              //   data : floatData2,
+              // color: '#800000',
+              // label:'Kuat Arus Referensi',
+              // }
 
               document.getElementById('kuat_arus').innerHTML = floatDataCurrent[floatDataCurrent.length-1][1];
 
