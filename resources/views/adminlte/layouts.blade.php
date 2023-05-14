@@ -545,11 +545,11 @@ setInterval(function() {
 function createFlotChartVoltage(data_voltage) {
   
   var floatDataVoltage = [];
-  var floatDataVoltage2 = [];
+  // var floatDataVoltage2 = [];
 
 for (var i = 0; i < data_voltage.length; i++) {
   floatDataVoltage.push([data_voltage[i].id, data_voltage[i].v]);
-  floatDataVoltage.push([data_voltage[i].id, data_voltage[i].v_ref]);
+  // floatDataVoltage.push([data_voltage[i].id, data_voltage[i].v_ref]);
 }
 
 
@@ -561,11 +561,11 @@ var motor_data1_voltage = {
             }
 
 
-              var motor_data2_voltage = {
-                data : floatDataVoltage2,
-              color: '#800000',
-              label:'Tegangan Referensi',
-              }
+              // var motor_data2_voltage = {
+              //   data : floatDataVoltage2,
+              // color: '#800000',
+              // label:'Tegangan Referensi',
+              // }
 
 // Create the Flot chart using the formatted data
 // $.plot("#data_Tegangan_motor", [floatData, floatData2], {
@@ -633,11 +633,11 @@ setInterval(function() {
             success: function(data_voltage) {
                 // Parse the JSON object and format it correctly for use in a Flot chart
                 var floatDataVoltage = [];
-                var floatDataVoltage2 = [];
+                // var floatDataVoltage2 = [];
 
               for (var i = 0; i < data_voltage.length; i++) {
                   floatDataVoltage.push([data_voltage[i].id, data_voltage[i].v]);
-                  floatDataVoltage2.push([data_voltage[i].id, data_voltage[i].v_ref]);
+                  // floatDataVoltage2.push([data_voltage[i].id, data_voltage[i].v_ref]);
               }
 
 
@@ -648,11 +648,11 @@ setInterval(function() {
             }
 
 
-              var motor_data2_voltage = {
-                data : floatData2,
-              color: '#800000',
-              label:'Tegangan Referensi',
-              }
+              // var motor_data2_voltage = {
+              //   data : floatData2,
+              // color: '#800000',
+              // label:'Tegangan Referensi',
+              // }
 
               if (floatDataVoltage == [] || floatDataVoltage == '') {
 
