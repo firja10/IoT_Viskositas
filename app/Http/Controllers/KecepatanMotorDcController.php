@@ -38,6 +38,22 @@ class KecepatanMotorDcController extends Controller
     public function store(Request $request)
     {
         //
+
+        $w_ref = $request->w_ref;
+        $w = $request->w;
+
+        $kecepatan_motor_dc = new kecepatan_motor_dc();
+        $kecepatan_motor_dc->w_ref = $request->w_ref;
+        $kecepatan_motor_dc->w = $request->w;
+
+        $error_w = $w - $w_ref;
+
+        $kecepatan_motor_dc->error_w = $error_w;
+        $kecepatan_motor_dc->ref_error_w = $request->ref_error_w;
+        $kecepatan_motor_dc->save();
+
+        return "Kecepatan Motor DC Berhasil disave";
+
     }
 
     /**
