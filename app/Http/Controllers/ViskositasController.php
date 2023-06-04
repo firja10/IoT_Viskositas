@@ -31,6 +31,20 @@ class ViskositasController extends Controller
     public function store(Request $request)
     {
         //
+
+        $v = $request->v;
+        $i = $request->i;
+
+        $f = ($request->w)/60;
+
+        
+        
+
+
+
+
+
+
     }
 
     /**

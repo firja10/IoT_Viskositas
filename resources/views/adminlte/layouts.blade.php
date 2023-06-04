@@ -398,7 +398,7 @@ var motor_data1_current = {
 
     yaxis : {
         show: true,
-        axisLabel:'Kuat Arus Motor (A)',
+        axisLabel:'Kuat Arus Motor (mA)',
         min:0,
         max:15,
       },
@@ -480,7 +480,7 @@ setInterval(function() {
                   },
                   yaxis : {
                       show: true,
-                      axisLabel:'Kuat Arus Motor (A)',
+                      axisLabel:'Kuat Arus Motor (mA)',
                       min:0,
                       max:15,
                     },
