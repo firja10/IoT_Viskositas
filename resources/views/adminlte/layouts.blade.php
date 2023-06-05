@@ -167,7 +167,7 @@
   $.ajax({
     url: "/data_viskositas",
     dataType: "json",
-    success: function(data) {
+    success: function(data_viskositas) {
         // Pass the data to the function that creates the Flot chart
         createFlotChartVis(data_viskositas);
     }
