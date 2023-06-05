@@ -169,20 +169,20 @@
     dataType: "json",
     success: function(data) {
         // Pass the data to the function that creates the Flot chart
-        createFlotChartVis(data);
+        createFlotChartVis(data_viskositas);
     }
 });
 
 
 
-function createFlotChartVis(data) {
+function createFlotChartVis(data_viskositas) {
   
   var floatDataVis = [];
   var floatData2Vis = [];
 
-for (var i = 0; i < data.length; i++) {
-    floatDataVis.push([data[i].id, data[i].vis]);
-    floatData2Vis.push([data[i].id, data[i].vis_ref]);
+for (var i = 0; i < data_viskositas.length; i++) {
+    floatDataVis.push([data_viskositas[i].id, data_viskositas[i].vis]);
+    floatData2Vis.push([data_viskositas[i].id, data_viskositas[i].vis_ref]);
 }
 
 
@@ -253,14 +253,14 @@ setInterval(function() {
         $.ajax({
             url: "/data_viskositas",
             dataType: "json",
-            success: function(data) {
+            success: function(data_viskositas) {
                 // Parse the JSON object and format it correctly for use in a Flot chart
                 var floatDataVis = [];
                 var floatData2Vis = [];
 
-              for (var i = 0; i < data.length; i++) {
-                  floatDataVis.push([data[i].id, data[i].vis]);
-                  floatData2Vis.push([data[i].id, data[i].vis_ref]);
+              for (var i = 0; i < data_viskositas.length; i++) {
+                  floatDataVis.push([data_viskositas[i].id, data_viskositas[i].vis]);
+                  floatData2Vis.push([data_viskositas[i].id, data_viskositas[i].vis_ref]);
               }
 
 
