@@ -160,6 +160,187 @@
 
 
 
+
+
+
+<script>
+  $.ajax({
+    url: "/data_kecepatan_motor",
+    dataType: "json",
+    success: function(data) {
+        // Pass the data to the function that creates the Flot chart
+        createFlotChart(data);
+    }
+});
+
+
+
+function createFlotChart(data) {
+  
+  var floatData = [];
+  var floatData2 = [];
+
+for (var i = 0; i < data.length; i++) {
+    floatData.push([data[i].id, data[i].w]);
+    floatData2.push([data[i].id, data[i].w_ref]);
+}
+
+
+var motor_data1 = {
+              data : floatData,
+              color: '#0000FF',
+              label:'Kecepatan',
+            }
+
+
+              var motor_data2 = {
+                data : floatData2,
+              color: '#800000',
+              label:'Kecepatan Referensi',
+              }
+
+// Create the Flot chart using the formatted data
+// $.plot("#data_kecepatan_motor", [floatData, floatData2], {
+  
+  document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
+  // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
+
+    $.plot("#data_kecepatan_motor", [motor_data1], {
+    series: {
+        lines: { show: true, lineWidth: 2 },
+        points: { show: true },
+        // floatData:{
+        //   color: '#3c8dbc',
+        // },
+        // floatData2:{
+        //   color: '#800000',
+        // }
+    },
+
+    yaxis : {
+        show: true,
+        axisLabel:'Kecepatan Motor (RPM)',
+        min:0,
+        max:15,
+      },
+      xaxis : {
+        show: true,
+        axisLabel:'Waktu (s)'
+      },
+
+      legend: {
+                    container: '.chartLegend',
+                    noColumns: 0,
+                    backgroundColor: "black",
+                    lineWidth: 0
+                },
+
+      grid: {
+    // markings: [
+    //   {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+    //   {yaxis: { from: 10, to: 100},color: "#198754"}
+    // ]
+  
+  
+  
+  }
+});
+
+
+
+
+setInterval(function() {
+        $.ajax({
+            url: "/data_kecepatan_motor",
+            dataType: "json",
+            success: function(data) {
+                // Parse the JSON object and format it correctly for use in a Flot chart
+                var floatData = [];
+                var floatData2 = [];
+
+              for (var i = 0; i < data.length; i++) {
+                  floatData.push([data[i].id, data[i].w]);
+                  floatData2.push([data[i].id, data[i].w_ref]);
+              }
+
+
+              var motor_data1 = {
+              data : floatData,
+              color: '#0000FF',
+              label:'Kecepatan',
+            }
+
+
+              var motor_data2 = {
+                data : floatData2,
+              color: '#800000',
+              label:'Kecepatan Referensi',
+              }
+
+              document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
+
+                // Update the Flot chart with the new data
+                // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
+
+                $.plot("#data_kecepatan_motor", [motor_data1],
+
+                // $.plot("#data_kecepatan_motor", [floatData, floatData2],
+                {
+                  series: {
+                      lines: { show: true, lineWidth: 2 },
+                      points: { show: true },
+                      // floatData:{
+                      //   color: '#3c8dbc',
+                      // },
+                      // floatData2:{
+                      //   color: '#800000',
+                      // }
+                  },
+                  yaxis : {
+                      show: true,
+                      axisLabel:'Kecepatan Motor (RPM)',
+                      min:0,
+                      max:15,
+                    },
+                    xaxis : {
+                      show: true,
+                      axisLabel:'Waktu (s)'
+                    },
+
+                    legend: {
+                    container: '.chartLegend',
+                    noColumns: 0,
+                    backgroundColor: "black",
+                    lineWidth: 0
+                },
+
+
+
+                    grid: {
+                      // markings: [
+                      //     {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+                      //     {yaxis: { from: 10, to: 100},color: "#198754"}
+                      // ]
+                    
+                    }
+
+
+                }
+                );
+            }
+        });
+    }, 1000);
+
+
+}
+
+</script>
+
+
+
+
+
+
 <script>
   $.ajax({
     url: "/data_kecepatan_motor",
