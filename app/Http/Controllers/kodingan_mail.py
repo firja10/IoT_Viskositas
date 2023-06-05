@@ -150,13 +150,16 @@ def read_sensor():
         conn_v.close()
 
 
+        vis =  ((v*i)/8*3.14*8*3.14*rpm*rpm)*0.0671
+
+
 
         # Ngirim Data Viskositas
         conn_vis = http.client.HTTPSConnection('maulinakartika.xyz')
         
         headers_vis = {'Content-Type': 'application/x-www-form-urlencoded'}
         
-        body_vis = 'v=' + str(v) + '&v_ref=2.5&ref_error_v=0.5'
+        body_vis = 'vis=' + str(vis) + '&vis_ref=0&ref_error_vis=0'
         
         conn_vis.request('POST', '/store_data_viskositas', body_vis, headers_vis)
         response = conn_vis.getresponse()

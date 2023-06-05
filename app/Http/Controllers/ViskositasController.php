@@ -37,11 +37,13 @@ class ViskositasController extends Controller
 
         $f = ($request->w)/60;
 
-        $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
+        // $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
+
+         $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
 
         $viskos = new Viskositas();
-        $viskos->vis;
-        $viskos->vis_ref = 0;
+        $viskos->vis = $request->vis;
+        $viskos->vis_ref = $request->vis_ref;
         $viskos->error_vis = 0;
         $viskos->ref_error_vis = 0;
 
