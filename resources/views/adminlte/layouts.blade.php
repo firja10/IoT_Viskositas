@@ -165,36 +165,36 @@
 
 <script>
   $.ajax({
-    url: "/data_kecepatan_motor",
+    url: "/data_viskositas",
     dataType: "json",
     success: function(data) {
         // Pass the data to the function that creates the Flot chart
-        createFlotChart(data);
+        createFlotChartVis(data);
     }
 });
 
 
 
-function createFlotChart(data) {
+function createFlotChartVis(data) {
   
-  var floatData = [];
-  var floatData2 = [];
+  var floatDataVis = [];
+  var floatData2Vis = [];
 
 for (var i = 0; i < data.length; i++) {
-    floatData.push([data[i].id, data[i].w]);
-    floatData2.push([data[i].id, data[i].w_ref]);
+    floatDataVis.push([data[i].id, data[i].vis]);
+    floatData2Vis.push([data[i].id, data[i].vis_ref]);
 }
 
 
-var motor_data1 = {
-              data : floatData,
+var Vis_data1 = {
+              data : floatDataVis,
               color: '#0000FF',
               label:'Kecepatan',
             }
 
 
-              var motor_data2 = {
-                data : floatData2,
+              var Vis_data2 = {
+                data : floatData2Vis,
               color: '#800000',
               label:'Kecepatan Referensi',
               }
@@ -202,10 +202,10 @@ var motor_data1 = {
 // Create the Flot chart using the formatted data
 // $.plot("#data_kecepatan_motor", [floatData, floatData2], {
   
-  document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
+  document.getElementById('viskositas').innerHTML = floatDataVis[floatDataVis.length-1][1];
   // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
 
-    $.plot("#data_kecepatan_motor", [motor_data1], {
+    $.plot("#data_viskositas", [Vis_data1], {
     series: {
         lines: { show: true, lineWidth: 2 },
         points: { show: true },
@@ -219,7 +219,7 @@ var motor_data1 = {
 
     yaxis : {
         show: true,
-        axisLabel:'Kecepatan Motor (RPM)',
+        axisLabel:'Viskositas (cP)',
         min:0,
         max:15,
       },
@@ -229,7 +229,7 @@ var motor_data1 = {
       },
 
       legend: {
-                    container: '.chartLegend',
+                    container: '.chartLegendViskositas',
                     noColumns: 0,
                     backgroundColor: "black",
                     lineWidth: 0
@@ -251,7 +251,7 @@ var motor_data1 = {
 
 setInterval(function() {
         $.ajax({
-            url: "/data_kecepatan_motor",
+            url: "/data_viskositas",
             dataType: "json",
             success: function(data) {
                 // Parse the JSON object and format it correctly for use in a Flot chart
@@ -259,30 +259,30 @@ setInterval(function() {
                 var floatData2 = [];
 
               for (var i = 0; i < data.length; i++) {
-                  floatData.push([data[i].id, data[i].w]);
-                  floatData2.push([data[i].id, data[i].w_ref]);
+                  floatDataVis.push([data[i].id, data[i].vis]);
+                  floatData2Vis.push([data[i].id, data[i].vis_ref]);
               }
 
 
-              var motor_data1 = {
-              data : floatData,
+              var Vis_data1 = {
+              data : floatDataVis,
               color: '#0000FF',
-              label:'Kecepatan',
+              label:'Viskositas',
             }
 
 
-              var motor_data2 = {
-                data : floatData2,
+              var Vis_data2 = {
+                data : floatData2Vis,
               color: '#800000',
-              label:'Kecepatan Referensi',
+              label:'Viskositas Referensi',
               }
 
-              document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
+              document.getElementById('vis').innerHTML = floatDataVis[floatDataVis.length-1][1];
 
                 // Update the Flot chart with the new data
                 // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
 
-                $.plot("#data_kecepatan_motor", [motor_data1],
+                $.plot("#data_viskositas", [Vis_data1],
 
                 // $.plot("#data_kecepatan_motor", [floatData, floatData2],
                 {
@@ -298,7 +298,7 @@ setInterval(function() {
                   },
                   yaxis : {
                       show: true,
-                      axisLabel:'Kecepatan Motor (RPM)',
+                      axisLabel:'Viskositas (cP)',
                       min:0,
                       max:15,
                     },
@@ -308,7 +308,7 @@ setInterval(function() {
                     },
 
                     legend: {
-                    container: '.chartLegend',
+                    container: '.chartLegendViskositas',
                     noColumns: 0,
                     backgroundColor: "black",
                     lineWidth: 0

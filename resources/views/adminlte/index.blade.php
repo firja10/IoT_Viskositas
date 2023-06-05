@@ -109,6 +109,9 @@
 
               <div id="data_tegangan" style="height: 300px;"></div>
               <div class="chartLegendVoltage"></div>
+
+              <div id="data_viskositas" style="height: 300px;"></div>
+              <div class="chartLegendViskositas"></div>
              
             
             </div>
