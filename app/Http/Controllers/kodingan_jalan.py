@@ -37,6 +37,10 @@ STEP = 8
 CW = 1
 CCW = 0
 
+#Effect Hall
+effect_hall = 37
+
+
 # FC-03 Sensor
 SENSOR_PIN = 31
 encoder_ticks = 0
@@ -56,6 +60,7 @@ GPIO_cur = 0
 # Establish Pins in software
 GPIO.setup(DIR, GPIO.OUT)
 GPIO.setup(STEP, GPIO.OUT)
+GPIO.setup(effect_hall, GPIO.IN)
 GPIO.setup(SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Set the first direction you want it to spin
@@ -105,6 +110,17 @@ def read_sensor():
         
         
                 # Set up GPIO mode and event detection
+                
+                
+        
+              
+        #Sensor Hall Effect
+        sensor_value = GPIO.input(effect_hall)
+        if sensor_value == GPIO.HIGH:
+            print("Medan magnet terdeteksi")
+        else:
+            print("Tidak ada medan magnet")
+        time.sleep(0.1)  # Tunggu 0.1 detik sebelum membaca lagi
 
                     
         #ina219
@@ -112,19 +128,18 @@ def read_sensor():
         i = ina.current()
         p = ina.power()
         
-        mylcd.lcd_display_string(str(v) + ' Volt      ', 1)
+        abs_i = abs(i)
+        abs_v = abs(v)
+        
+        mylcd.lcd_display_string(str(abs_v) + ' Volt      ', 1)
         #mylcd.lcd_display_string(str(i) + ' mA', 2)
         #mylcd.lcd_display_string('{:.3f} mA'.format(i), 2)
         
         if i < 0:
             #mylcd.lcd_display_string('0.000 mA', 2)
-            mylcd.lcd_display_string('{:.3f} mA   '.format(i), 2)
+            mylcd.lcd_display_string('{:.3f} mA   '.format(abs_i), 2)
         else:
-            mylcd.lcd_display_string('{:.3f}  mA   '.format(i), 2)
-
-
-        
-
+            mylcd.lcd_display_string('{:.3f}  mA   '.format(abs_i), 2)
 
         
         time.sleep(2)
@@ -134,7 +149,7 @@ def read_sensor():
         
         headers_i = {'Content-Type': 'application/x-www-form-urlencoded'}
         
-        body_i = 'i=' + str(i) + '&i_ref=2.5&ref_error_i=0.5'
+        body_i = 'i=' + str(abs_i) + '&i_ref=2.5&ref_error_i=0.5'
         
         conn.request('POST', '/store_data_kuat_arus', body_i, headers_i)
         response = conn.getresponse()
@@ -146,33 +161,12 @@ def read_sensor():
         
         headers_v = {'Content-Type': 'application/x-www-form-urlencoded'}
         
-        body_v = 'v=' + str(v) + '&v_ref=2.5&ref_error_v=0.5'
+        body_v = 'v=' + str(abs_v) + '&v_ref=2.5&ref_error_v=0.5'
         
         conn_v.request('POST', '/store_data_tegangan', body_v, headers_v)
         response = conn_v.getresponse()
         
         conn_v.close()
-
-
-        vis =  ((v*i)/8*3.14*8*3.14*rpm*rpm)*0.0671
-
-    
-
-        # Ngirim Data Viskositas
-        conn_vis = http.client.HTTPSConnection('maulinakartika.xyz')
-        
-        headers_vis = {'Content-Type': 'application/x-www-form-urlencoded'}
-        
-        body_vis = 'vis=' + str(vis) + '&vis_ref=0&ref_error_vis=0'
-        
-        conn_vis.request('POST', '/store_data_viskositas', body_vis, headers_vis)
-        response = conn_vis.getresponse()
-        
-        conn_vis.close()
-
-        time.sleep(5)
-        mylcd.lcd_display_string(str(vis) + ' cP      ', 1)
-        
         
         
 #GPIO.setmode(GPIO.BCM)
@@ -200,7 +194,8 @@ def control_motor():
             sleep(0.005)
         
             #encoder_thread.start()
-        print(rpm)
+        if(rpm != 0):
+            print(rpm)
         
 
 def main():
@@ -211,5 +206,5 @@ def main():
     motor_thread.start()
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()

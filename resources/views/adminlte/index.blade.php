@@ -69,7 +69,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3 id="viskositas"></h3><h3>Pa*s</h3>
+                  <h3 id="viskositas"></h3><h3>cP</h3>
   
                   <p>Viskositas</p>
                 </div>
