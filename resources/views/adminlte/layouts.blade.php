@@ -277,7 +277,7 @@ setInterval(function() {
               label:'Viskositas Referensi',
               }
 
-              document.getElementById('vis').innerHTML = floatDataVis[floatDataVis.length-1][1];
+              document.getElementById('viskositas').innerHTML = floatDataVis[floatDataVis.length-1][1];
 
                 // Update the Flot chart with the new data
                 // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
