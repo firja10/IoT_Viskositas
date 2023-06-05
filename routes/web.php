@@ -49,6 +49,8 @@ Route::post('/store_data_kecepatan_motor', [App\Http\Controllers\KecepatanMotorD
 Route::post('/store_data_kuat_arus', [App\Http\Controllers\KuatArusMotorDcController::class, 'store'])->name('store_data_kuat_arus');
 Route::post('/store_data_tegangan', [App\Http\Controllers\TeganganMotorDcController::class, 'store'])->name('store_data_tegangan');
 
+Route::post('/store_data_viskositas', [App\Http\Controllers\ViskositasController::class, 'store'])->name('store_data_viskositas');
+
 
 
 
