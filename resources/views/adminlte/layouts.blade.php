@@ -255,8 +255,8 @@ setInterval(function() {
             dataType: "json",
             success: function(data) {
                 // Parse the JSON object and format it correctly for use in a Flot chart
-                var floatData = [];
-                var floatData2 = [];
+                var floatDataVis = [];
+                var floatData2Vis = [];
 
               for (var i = 0; i < data.length; i++) {
                   floatDataVis.push([data[i].id, data[i].vis]);
