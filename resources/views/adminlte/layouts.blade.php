@@ -221,7 +221,7 @@ var Vis_data1 = {
         show: true,
         axisLabel:'Viskositas (cP)',
         min:0,
-        max:15,
+        max:10000,
       },
       xaxis : {
         show: true,
@@ -300,7 +300,7 @@ setInterval(function() {
                       show: true,
                       axisLabel:'Viskositas (cP)',
                       min:0,
-                      max:15,
+                      max:10000,
                     },
                     xaxis : {
                       show: true,
