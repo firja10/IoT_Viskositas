@@ -41,7 +41,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3 id="kuat_arus"></h3> <h3>mA</h3>
+                  <h3 id="kuat_arus"></h3> <h3>A</h3>
   
                   <p>Arus Motor DC</p>
                 </div>
