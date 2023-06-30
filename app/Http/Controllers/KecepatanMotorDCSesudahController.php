@@ -29,6 +29,22 @@ class KecepatanMotorDCSesudahController extends Controller
     public function store(Request $request)
     {
         //
+
+        $w_ref_sud = $request->w_sud_ref_sud;
+        $w_sud = $request->w_sud;
+
+        $kecepatan_motor_dc_sesudah = new KecepatanMotorDCSesudah();
+        $kecepatan_motor_dc_sesudah->w_ref_sud = $request->w_sud_ref_sud;
+        $kecepatan_motor_dc_sesudah->w = $request->w_sud;
+
+        $error_w_sud = $w_sud - $w_ref_sud;
+
+        $kecepatan_motor_dc_sesudah->error_w_sud = $error_w_sud;
+        $kecepatan_motor_dc_sesudah->ref_error_w_sud = $request->ref_error_w_sud;
+        $kecepatan_motor_dc_sesudah->save();
+
+        return "Kecepatan Motor DC Sesudah Ada Fluida Berhasil disave";
+
     }
 
     /**

@@ -112,6 +112,10 @@
 
               <div id="data_viskositas" style="height: 300px;"></div>
               <div class="chartLegendViskositas"></div>
+
+              <div id="data_kecepatan_motor_sesudah" style="height: 300px;"></div>
+              <div class="chartLegendSpeedAfter"></div>
+
              
             
             </div>

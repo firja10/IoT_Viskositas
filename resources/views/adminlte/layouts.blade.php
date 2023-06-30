@@ -163,6 +163,223 @@
 
 
 
+
+
+
+
+
+
+
+<script>
+  $.ajax({
+    url: "/data_kecepatan_motor_sesudah",
+    dataType: "json",
+    success: function(data_kecepatan_motor_sesudah) {
+        // Pass the data to the function that creates the Flot chart
+        createFlotChartSpeedAfter(data_kecepatan_motor_sesudah);
+    }
+});
+
+
+
+function createFlotChartSpeedAfter(data_kecepatan_motor_sesudah) {
+  
+  var floatDataSpeedAfter = [];
+  var floatData2SpeedAfter = [];
+
+for (var i = 0; i < data_kecepatan_motor_sesudah.length; i++) {
+    floatDataSpeedAfter.push([data_kecepatan_motor_sesudah[i].id, data_kecepatan_motor_sesudah[i].w_sud]);
+    floatData2SpeedAfter.push([data_kecepatan_motor_sesudah[i].id, data_kecepatan_motor_sesudah[i].w_ref_sud]);
+}
+
+
+var SpeedAfter_data1 = {
+              data : floatDataSpeedAfter,
+              color: '#0000FF',
+              label:'Kecepatan',
+            }
+
+
+              var SpeedAfter_data2 = {
+                data : floatData2SpeedAfter,
+              color: '#800000',
+              label:'Kecepatan Referensi',
+              }
+
+// Create the Flot chart using the formatted data
+// $.plot("#data_kecepatan_motor", [floatData, floatData2], {
+  
+  document.getElementById('kecepatan_motor_sesudah').innerHTML = floatDataSpeedAfter[floatDataSpeedAfter.length-1][1];
+  // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
+
+    $.plot("#data_kecepatan_motor_sesudah", [SpeedAfter_data1], {
+    series: {
+        lines: { show: true, lineWidth: 2 },
+        points: { show: true },
+        // floatData:{
+        //   color: '#3c8dbc',
+        // },
+        // floatData2:{
+        //   color: '#800000',
+        // }
+    },
+
+    yaxis : {
+        show: true,
+        axisLabel:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
+        min:0,
+        max:10000,
+      },
+      xaxis : {
+        show: true,
+        axisLabel:'Waktu (s)'
+      },
+
+      legend: {
+                    container: '.chartLegendKecepatanMotorSesudah',
+                    noColumns: 0,
+                    backgroundColor: "black",
+                    lineWidth: 0
+                },
+
+      grid: {
+    // markings: [
+    //   {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+    //   {yaxis: { from: 10, to: 100},color: "#198754"}
+    // ]
+  
+  
+  
+  }
+});
+
+
+
+
+setInterval(function() {
+        $.ajax({
+            url: "/data_kecepatan_motor_sesudah",
+            dataType: "json",
+            success: function(data_kecepatan_motor_sesudah) {
+                // Parse the JSON object and format it correctly for use in a Flot chart
+                var floatDataSpeedAfter = [];
+                var floatData2SpeedAfter = [];
+
+              for (var i = 0; i < data_kecepatan_motor_sesudah.length; i++) {
+                  floatDataSpeedAfter.push([data_kecepatan_motor_sesudah[i].id, data_kecepatan_motor_sesudah[i].w_sud]);
+                  floatData2SpeedAfter.push([data_kecepatan_motor_sesudah[i].id, data_kecepatan_motor_sesudah[i].w_ref_sud]);
+              }
+
+
+              var SpeedAfter_data1 = {
+              data : floatDataVis,
+              color: '#0000FF',
+              label:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
+            }
+
+
+              var SpeedAfter_data2 = {
+                data : floatData2Vis,
+              color: '#800000',
+              label:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
+              }
+
+              document.getElementById('kecepatan_motor_sesudah').innerHTML = floatDataVis[floatDataVis.length-1][1];
+
+                // Update the Flot chart with the new data
+                // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
+
+                $.plot("#data_kecepatan_motor_sesudah", [Vis_data1],
+
+                // $.plot("#data_kecepatan_motor", [floatData, floatData2],
+                {
+                  series: {
+                      lines: { show: true, lineWidth: 2 },
+                      points: { show: true },
+                      // floatData:{
+                      //   color: '#3c8dbc',
+                      // },
+                      // floatData2:{
+                      //   color: '#800000',
+                      // }
+                  },
+                  yaxis : {
+                      show: true,
+                      axisLabel:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
+                      min:0,
+                      max:10000,
+                    },
+                    xaxis : {
+                      show: true,
+                      axisLabel:'Waktu (s)'
+                    },
+
+                    legend: {
+                    container: '.chartLegendKecepatanMotorSesudah',
+                    noColumns: 0,
+                    backgroundColor: "black",
+                    lineWidth: 0
+                },
+
+
+
+                    grid: {
+                      // markings: [
+                      //     {yaxis: { from: 0, to: 10 },color: "#FFCC00"},
+                      //     {yaxis: { from: 10, to: 100},color: "#198754"}
+                      // ]
+                    
+                    }
+
+
+                }
+                );
+            }
+        });
+    }, 1000);
+
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
   $.ajax({
     url: "/data_viskositas",
@@ -509,7 +726,6 @@ setInterval(function() {
         });
     }, 1000);
 
-
 }
 
 </script>
@@ -718,9 +934,6 @@ setInterval(function() {
         
     }
 });
-
-
-
 
 
 function createFlotChartVoltage(data_voltage) {

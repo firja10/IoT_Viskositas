@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         '/store_data_kuat_arus',
         '/store_data_tegangan',
         '/store_data_kecepatan_motor',
+        '/store_data_kecepatan_motor_sesudah',
         '/store_data_viskositas',
     ];
 }
