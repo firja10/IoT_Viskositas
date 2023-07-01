@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Viskositas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ViskositasController extends Controller
 {
@@ -32,23 +33,51 @@ class ViskositasController extends Controller
     {
         //
 
-        $v = $request->v;
-        $i = $request->i;
+        $delay = $request->delay;
 
-        $f = ($request->w)/60;
-
-        // $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
-
-         $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
-
-        $viskos = new Viskositas();
-        $viskos->vis = $request->vis;
-        $viskos->vis_ref = $request->vis_ref;
-        $viskos->error_vis = 0;
-        $viskos->ref_error_vis = 0;
+        
 
 
-        $viskos->save();
+  
+        $tabel_kecepatan_motor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->get();
+
+        foreach ($tabel_kecepatan_motor as $tabel_kecepatan_motors) {
+            # code...
+
+
+
+
+            $v = $request->v;
+            $i = $request->i;
+    
+            $f = ($request->w_sud)* 0.016667;
+    
+            // $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
+    
+
+    
+            $viskos = new Viskositas();
+            $viskos->id = $tabel_kecepatan_motors->id;
+  
+            $viskos->vis_ref = $request->vis_ref;
+            $viskos->error_vis = 0;
+            $viskos->ref_error_vis = 0;
+
+            $kecepatan_motor_polos = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $tabel_kecepatan_motors->id)->first();
+            $f0 = $kecepatan_motor_polos->w;
+
+            $vis = (($v*$i)/8*3.14*3.14*3.14*$f*$f0*0.15)*0.0671;
+            $viskos->$vis;
+    
+            $viskos->save();
+    
+
+
+        }
+
+
+
+
 
         
         

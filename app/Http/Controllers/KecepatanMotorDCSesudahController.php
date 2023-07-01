@@ -37,6 +37,8 @@ class KecepatanMotorDCSesudahController extends Controller
         $kecepatan_motor_dc_sesudah->w_ref_sud = $request->w_sud_ref_sud;
         $kecepatan_motor_dc_sesudah->w = $request->w_sud;
 
+        $kecepatan_motor_dc_sesudah->delay = $request->delay;
+
         $error_w_sud = $w_sud - $w_ref_sud;
 
         $kecepatan_motor_dc_sesudah->error_w_sud = $error_w_sud;

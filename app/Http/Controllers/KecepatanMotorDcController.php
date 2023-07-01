@@ -48,6 +48,8 @@ class KecepatanMotorDcController extends Controller
 
         $error_w = $w - $w_ref;
 
+        $kecepatan_motor_dc->delay = $request->delay;
+
         $kecepatan_motor_dc->error_w = $error_w;
         $kecepatan_motor_dc->ref_error_w = $request->ref_error_w;
         $kecepatan_motor_dc->save();
