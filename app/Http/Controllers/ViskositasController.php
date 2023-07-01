@@ -81,30 +81,33 @@ class ViskositasController extends Controller
         // }
 
 
-    $v = $request->v;
-    $i = $request->i;
-    $wSud = $request->w_sud;
-    $visRef = $request->vis_ref;
-    $refErrorVis = $request->ref_error_vis;
-    $delay = $request->delay;
+ $delay = $request->delay;
+    
+    $tabel_kecepatan_motor = DB::table('kecepatan_motor_dcs')
+        ->where('delay', $delay)
+        ->orderBy('id', 'asc')
+        ->get();
 
-    $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->first();
+    $viskositas = Viskositas::orderBy('id', 'asc')->pluck('id')->toArray();
+    $lastId = end($viskositas);
 
-    if ($kecepatanMotor) {
-        $viskos = Viskositas::where('id', $kecepatanMotor->id)->first();
+    foreach ($tabel_kecepatan_motor as $index => $tabel_kecepatan_motors) {
+        $v = $request->v;
+        $i = $request->i;
+        $f = $request->w_sud * 0.016667;
 
-        if (!$viskos) {
-            $viskos = new Viskositas();
-            $viskos->id = $kecepatanMotor->id;
-        }
-
-        $viskos->vis_ref = $visRef;
+        $viskos = new Viskositas();
+        $viskos->id = $lastId + $index + 1;
+        $viskos->vis_ref = $request->vis_ref;
         $viskos->error_vis = 0;
-        $viskos->ref_error_vis = $refErrorVis;
+        $viskos->ref_error_vis = 0;
 
-        $f = $wSud * 0.016667;
-        $f0 = $kecepatanMotor->w;
+        $kecepatan_motor_polos = DB::table('kecepatan_motor_dcs')
+            ->where('delay', $delay)
+            ->where('id', $tabel_kecepatan_motors->id)
+            ->first();
 
+        $f0 = $kecepatan_motor_polos->w;
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
         $viskos->vis = $vis;
 
