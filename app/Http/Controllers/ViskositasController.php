@@ -80,47 +80,34 @@ class ViskositasController extends Controller
 
         // }
 
-
     $v = $request->v;
     $i = $request->i;
-    $w_sud = $request->w_sud;
-    $vis_ref = $request->vis_ref;
-    $ref_error_vis = $request->ref_error_vis;
+    $wSud = $request->w_sud;
+    $visRef = $request->vis_ref;
+    $refErrorVis = $request->ref_error_vis;
     $delay = $request->delay;
 
-    // Mendapatkan id teratas dari tabel kecepatan_motor_dcs
-    $maxId = DB::table('kecepatan_motor_dcs')->max('id');
+    $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->first();
 
-    // Mendapatkan data kecepatan_motor_d_c_sesudahs dengan delay tertentu secara berurutan
-    $tabel_kecepatan_motor_sesudahs = DB::table('kecepatan_motor_d_c_sesudahs')
-        ->where('delay', $delay)
-        ->orderBy('id', 'asc')
-        ->get();
+    if ($kecepatanMotor) {
+        $viskos = Viskositas::where('id', $kecepatanMotor->id)->first();
 
-    // Iterasi data kecepatan_motor_d_c_sesudahs dan simpan ke tabel viskositas
-    foreach ($tabel_kecepatan_motor_sesudahs as $tabel_kecepatan_motor_sesudah) {
-        // Mendapatkan nilai w dari kecepatan_motor_dcs berdasarkan id
-        $kecepatan_motor_dc = DB::table('kecepatan_motor_dcs')
-            ->where('id', $tabel_kecepatan_motor_sesudah->id)
-            ->first();
+        if (!$viskos) {
+            $viskos = new Viskositas();
+            $viskos->id = $kecepatanMotor->id;
+        }
 
-        // Menggandakan nilai w menjadi 2*w
-        $w = $kecepatan_motor_dc->w * 2;
+        $viskos->vis_ref = $visRef;
+        $viskos->error_vis = 0;
+        $viskos->ref_error_vis = $refErrorVis;
 
-        // Menghitung nilai vis
-        $f = $tabel_kecepatan_motor_sesudah->w_sud * 0.016667;
-        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $w * 0.15)) * 0.0671;
+        $f = $wSud * 0.016667;
+        $f0 = $kecepatanMotor->w;
 
-        // Menyimpan data ke tabel viskositas
-        $viskositas = new Viskositas();
-        $viskositas->id = $maxId + 1; // Menyimpan data di baris paling atas
-        $viskositas->vis_ref = $vis_ref;
-        $viskositas->error_vis = 0;
-        $viskositas->ref_error_vis = $ref_error_vis;
-        $viskositas->vis = $vis;
-        $viskositas->save();
+        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
+        $viskos->vis = $vis;
 
-        $maxId++;
+        $viskos->save();
     }
         
 
