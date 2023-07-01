@@ -33,55 +33,86 @@ class ViskositasController extends Controller
     {
         //
 
-        $delay = $request->delay;
+        // $delay = $request->delay;
 
         
 
 
   
-        $tabel_kecepatan_motor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->get();
+        // $tabel_kecepatan_motor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->get();
 
-        // dd($tabel_kecepatan_motor);
+        // // dd($tabel_kecepatan_motor);
 
-        foreach ($tabel_kecepatan_motor as $tabel_kecepatan_motors) {
-            # code...
-
-
+        // foreach ($tabel_kecepatan_motor as $tabel_kecepatan_motors) {
+        //     # code...
 
 
-            $v = $request->v;
-            $i = $request->i;
+
+
+        //     $v = $request->v;
+        //     $i = $request->i;
     
-            $f = ($request->w_sud)* 0.016667;
+        //     $f = ($request->w_sud)* 0.016667;
     
-            // $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
+        //     // $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
     
 
     
-            $viskos = new Viskositas();
-            $viskos->id = $tabel_kecepatan_motors->id;
+        //     $viskos = new Viskositas();
+        //     $viskos->id = $tabel_kecepatan_motors->id;
   
-            $viskos->vis_ref = $request->vis_ref;
+        //     $viskos->vis_ref = $request->vis_ref;
+        //     $viskos->error_vis = 0;
+        //     $viskos->ref_error_vis = 0;
+
+        //     $kecepatan_motor_polos = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $tabel_kecepatan_motors->id)->first();
+
+
+
+        //     $f0 = $kecepatan_motor_polos->w;
+
+        //     $vis = (($v*$i)/8*3.14*3.14*3.14*$f*$f0*0.15)*0.0671;
+        //     $viskos->vis = $vis;
+    
+        //     $viskos->save();
+    
+
+
+        // }
+
+
+
+
+
+        $v = $request->v;
+        $i = $request->i;
+        $wSud = $request->w_sud;
+        $visRef = $request->vis_ref;
+        $refErrorVis = $request->ref_error_vis;
+        $delay = $request->delay;
+    
+        $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->first();
+    
+        if ($kecepatanMotor) {
+            $viskos = Viskositas::where('id', null)->first();
+    
+            if (!$viskos) {
+                $viskos = new Viskositas();
+            }
+    
+            $viskos->id = $kecepatanMotor->id;
+            $viskos->vis_ref = $visRef;
             $viskos->error_vis = 0;
-            $viskos->ref_error_vis = 0;
-
-            $kecepatan_motor_polos = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $tabel_kecepatan_motors->id)->first();
-
-
-
-            $f0 = $kecepatan_motor_polos->w;
-
-            $vis = (($v*$i)/8*3.14*3.14*3.14*$f*$f0*0.15)*0.0671;
+            $viskos->ref_error_vis = $refErrorVis;
+    
+            $f = $wSud * 0.016667;
+            $f0 = $kecepatanMotor->w;
+    
+            $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
             $viskos->vis = $vis;
     
             $viskos->save();
-    
-
-
         }
-
-
-
 
 
         
