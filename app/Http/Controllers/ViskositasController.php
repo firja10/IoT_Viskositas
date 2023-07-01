@@ -41,6 +41,8 @@ class ViskositasController extends Controller
   
         $tabel_kecepatan_motor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->get();
 
+        // dd($tabel_kecepatan_motor);
+
         foreach ($tabel_kecepatan_motor as $tabel_kecepatan_motors) {
             # code...
 
@@ -64,10 +66,13 @@ class ViskositasController extends Controller
             $viskos->ref_error_vis = 0;
 
             $kecepatan_motor_polos = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $tabel_kecepatan_motors->id)->first();
+
+
+
             $f0 = $kecepatan_motor_polos->w;
 
             $vis = (($v*$i)/8*3.14*3.14*3.14*$f*$f0*0.15)*0.0671;
-            $viskos->$vis;
+            $viskos->vis = $vis;
     
             $viskos->save();
     
