@@ -110,7 +110,7 @@ class ViskositasController extends Controller
 
         $viskos->save();
     }
-        }
+        
 
 
         
