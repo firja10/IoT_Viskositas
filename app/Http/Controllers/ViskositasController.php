@@ -81,37 +81,35 @@ class ViskositasController extends Controller
         // }
 
 
+    $v = $request->v;
+    $i = $request->i;
+    $wSud = $request->w_sud;
+    $visRef = $request->vis_ref;
+    $refErrorVis = $request->ref_error_vis;
+    $delay = $request->delay;
 
+    $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->first();
 
+    if ($kecepatanMotor) {
+        $viskos = Viskositas::where('id', $kecepatanMotor->id)->first();
 
-        $v = $request->v;
-        $i = $request->i;
-        $wSud = $request->w_sud;
-        $visRef = $request->vis_ref;
-        $refErrorVis = $request->ref_error_vis;
-        $delay = $request->delay;
-    
-        $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->first();
-    
-        if ($kecepatanMotor) {
-            $viskos = Viskositas::where('id', null)->first();
-    
-            if (!$viskos) {
-                $viskos = new Viskositas();
-            }
-    
+        if (!$viskos) {
+            $viskos = new Viskositas();
             $viskos->id = $kecepatanMotor->id;
-            $viskos->vis_ref = $visRef;
-            $viskos->error_vis = 0;
-            $viskos->ref_error_vis = $refErrorVis;
-    
-            $f = $wSud * 0.016667;
-            $f0 = $kecepatanMotor->w;
-    
-            $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
-            $viskos->vis = $vis;
-    
-            $viskos->save();
+        }
+
+        $viskos->vis_ref = $visRef;
+        $viskos->error_vis = 0;
+        $viskos->ref_error_vis = $refErrorVis;
+
+        $f = $wSud * 0.016667;
+        $f0 = $kecepatanMotor->w;
+
+        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
+        $viskos->vis = $vis;
+
+        $viskos->save();
+    }
         }
 
 
