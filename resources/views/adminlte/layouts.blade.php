@@ -275,14 +275,14 @@ setInterval(function() {
 
 
               var SpeedAfter_data1 = {
-              data : floatDataVis,
+              data : floatDataSpeedAfter,
               color: '#0000FF',
               label:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
             }
 
 
               var SpeedAfter_data2 = {
-                data : floatData2Vis,
+                data : floatDataSpeedAfter,
               color: '#800000',
               label:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
               }
