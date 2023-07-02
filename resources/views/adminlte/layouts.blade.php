@@ -239,7 +239,7 @@ var SpeedAfter_data1 = {
       },
 
       legend: {
-                    container: '.chartLegendKecepatanMotorSesudah',
+                    container: '.chartLegendSpeedAfter',
                     noColumns: 0,
                     backgroundColor: "black",
                     lineWidth: 0
@@ -318,7 +318,7 @@ setInterval(function() {
                     },
 
                     legend: {
-                    container: '.chartLegendKecepatanMotorSesudah',
+                    container: '.chartLegendSpeedAfter',
                     noColumns: 0,
                     backgroundColor: "black",
                     lineWidth: 0
