@@ -210,7 +210,7 @@ var SpeedAfter_data1 = {
 // $.plot("#data_kecepatan_motor", [floatData, floatData2], {
   
   
-  // document.getElementById('kecepatan_motor_sesudah').innerHTML = floatDataSpeedAfter[floatDataSpeedAfter.length-1][1];
+   document.getElementById('kecepatan_motor').innerHTML = floatDataSpeedAfter[floatDataSpeedAfter.length-1][1];
   
   
   // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
@@ -287,7 +287,7 @@ setInterval(function() {
               label:'Kecepatan Motor Sesudah Ada Fluida (RPM)',
               }
 
-              // document.getElementById('kecepatan_motor_sesudah').innerHTML = floatDataVis[floatDataVis.length-1][1];
+              document.getElementById('kecepatan_motor').innerHTML = floatDataSpeedAfter[floatDataSpeedAfter.length-1][1];
 
                 // Update the Flot chart with the new data
                 // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
@@ -600,7 +600,7 @@ var motor_data1 = {
 // Create the Flot chart using the formatted data
 // $.plot("#data_kecepatan_motor", [floatData, floatData2], {
   
-  document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
+  //document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
   // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2], {
 
     $.plot("#data_kecepatan_motor", [motor_data1], {
@@ -675,7 +675,7 @@ setInterval(function() {
               label:'Kecepatan Referensi',
               }
 
-              document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
+             // document.getElementById('kecepatan_motor').innerHTML = floatData[floatData.length-1][1];
 
                 // Update the Flot chart with the new data
                 // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
