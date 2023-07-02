@@ -35,51 +35,6 @@ class ViskositasController extends Controller
     {
         //
 
-        // $delay = $request->delay;
-
-        
-
-
-  
-        // $tabel_kecepatan_motor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->get();
-
-        // // dd($tabel_kecepatan_motor);
-
-        // foreach ($tabel_kecepatan_motor as $tabel_kecepatan_motors) {
-        //     # code...
-
-
-
-
-        //     $v = $request->v;
-        //     $i = $request->i;
-    
-        //     $f = ($request->w_sud)* 0.016667;
-    
-        //     // $vis = (($v*$i)/8*3.14*8*3.14*$f*$f)*0.0671;
-    
-
-    
-        //     $viskos = new Viskositas();
-        //     $viskos->id = $tabel_kecepatan_motors->id;
-  
-        //     $viskos->vis_ref = $request->vis_ref;
-        //     $viskos->error_vis = 0;
-        //     $viskos->ref_error_vis = 0;
-
-        //     $kecepatan_motor_polos = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $tabel_kecepatan_motors->id)->first();
-
-
-
-        //     $f0 = $kecepatan_motor_polos->w;
-
-        //     $vis = (($v*$i)/8*3.14*3.14*3.14*$f*$f0*0.15)*0.0671;
-        //     $viskos->vis = $vis;
-    
-        //     $viskos->save();
-    
-
-
         // }
 
     $v = $request->v;
@@ -141,9 +96,21 @@ class ViskositasController extends Controller
 
         } 
         
-        elseif($status_visko == 3) { // Curah
+        elseif($status_visko == 3) { // Air
 
-            $angkaFloat = 0.98999 + mt_rand() / mt_getrandmax() * (1.034 - 0.98999);
+            $angkaFloat = 0.90 + mt_rand() / mt_getrandmax() * (1.034 - 0.90);
+
+            $acuan = $angkaFloat;
+
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
+
+        } 
+
+
+
+        elseif($status_visko == 4) { // Air
+
+            $angkaFloat = 0.09799 + mt_rand() / mt_getrandmax() * (0.112 - 0.09799);
 
             $acuan = $angkaFloat;
 
@@ -177,13 +144,17 @@ class ViskositasController extends Controller
         ]);
 
 
+    } 
 
 
 
 
 
-    }
 
+
+
+
+    
     /**
      * Display the specified resource.
      */
