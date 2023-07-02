@@ -115,10 +115,10 @@ class ViskositasController extends Controller
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
 
-        $randomFloat = 0.04744 + mt_rand() / mt_getrandmax() * (0.0476 - 0.04744);
+        $angkaFloat = 0.04744 + mt_rand() / mt_getrandmax() * (0.0476 - 0.04744);
 
 
-        dd(rand(0.04744, 0.0476));
+        dd($angkaFloat);
 
 
         if ($status_visko == 1) { // Sanco
