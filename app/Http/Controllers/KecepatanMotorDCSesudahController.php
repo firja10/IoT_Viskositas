@@ -9,10 +9,18 @@ class KecepatanMotorDCSesudahController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
+        */
     public function index()
     {
         //
+
+
+        $kecepatan =  KecepatanMotorDCSesudah::select('id', 'w_ref_sud', 'w_sud')->get();
+
+        return response()->json($kecepatan);
+
+
+
     }
 
     /**
