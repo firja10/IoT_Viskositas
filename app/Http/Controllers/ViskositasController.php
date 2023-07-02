@@ -114,6 +114,8 @@ class ViskositasController extends Controller
         $status_visko = $request->status_visko;
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
+        dd($vis);
+
 
         if ($status_visko == 1) { // Sanco
             # code...
@@ -121,7 +123,7 @@ class ViskositasController extends Controller
 
             $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
-            dd(rand(0.04744, 0.0476));
+
 
 
         } elseif($status_visko == 2) { // Curah
