@@ -14,10 +14,10 @@ class KecepatanMotorDCSesudahController extends Controller
     {
         //
 
-        $kecepatan =  KecepatanMotorDCSesudah::select('id', 'w_ref_sud', 'w_sud')->get();
-        return response()->json($kecepatan);
+        $kecepatan_sesudah =  KecepatanMotorDCSesudah::select('id', 'w_ref_sud', 'w_sud')->get();
+        return response()->json($kecepatan_sesudah);
 
-        
+
     }
 
     /**
