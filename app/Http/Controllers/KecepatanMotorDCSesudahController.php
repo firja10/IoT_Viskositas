@@ -30,11 +30,11 @@ class KecepatanMotorDCSesudahController extends Controller
     {
         //
 
-        $w_ref_sud = $request->w_sud_ref_sud;
+        $w_ref_sud = $request->w_ref_sud;
         $w_sud = $request->w_sud;
 
         $kecepatan_motor_dc_sesudah = new KecepatanMotorDCSesudah();
-        $kecepatan_motor_dc_sesudah->w_ref_sud = $request->w_sud_ref_sud;
+        $kecepatan_motor_dc_sesudah->w_ref_sud = $request->w_ref_sud;
         $kecepatan_motor_dc_sesudah->w_sud = $request->w_sud;
 
         $kecepatan_motor_dc_sesudah->delay = $request->delay;
