@@ -139,7 +139,20 @@ class ViskositasController extends Controller
 
             $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
-        } else {
+        } 
+        
+        elseif($status_visko == 3) { // Curah
+
+            $angkaFloat = 0.98999 + mt_rand() / mt_getrandmax() * (1.034 - 0.98999);
+
+            $acuan = $angkaFloat;
+
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
+
+        } 
+        
+        
+        else {
 
             $acuan = $vis;
             $i_new = $i;
