@@ -136,6 +136,9 @@ class ViskositasController extends Controller
 
 
 
+        dd($acuan);
+
+
 
 
         Viskositas::where('id', $max_id)->update([
