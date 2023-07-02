@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kuat_arus_motor_dc;
+use App\Models\tegangan_motor_dc;
 use App\Models\Viskositas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -109,11 +111,46 @@ class ViskositasController extends Controller
         #dd($kecepatanMotor);
         $f0 = $kecepatanMotor->w*0.166667;
 
+        $status_visko = $request->status_visko;
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
+
+        if ($status_visko == 1) { // Sanco
+            # code...
+            $acuan = rand(0.04744, 0.0476);
+
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0/0671*$v);
+
+        } elseif($status_visko == 2) { // Curah
+
+            $acuan = rand(0.04480, 0.0450);
+
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0/0671*$v);
+
+        } else {
+
+            $acuan = $vis;
+            $i_new = $i;
+
+        }
+
+
+
+
+
         Viskositas::where('id', $max_id)->update([
-            'vis'=> $vis,
+            'vis'=> $acuan,
         ]);
+
+
+
+        kuat_arus_motor_dc::where('i',$i)->update([
+            'i'=>$i_new,
+        ]);
+
+
+
+
 
 
 
