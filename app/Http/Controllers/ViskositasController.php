@@ -110,6 +110,9 @@ class ViskositasController extends Controller
         $max_id = Viskositas::max('id');
 
 
+        dd($max_id);
+
+
 
 
         $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $max_id)->first();
