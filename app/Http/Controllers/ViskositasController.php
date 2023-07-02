@@ -110,7 +110,7 @@ class ViskositasController extends Controller
         $max_id = Viskositas::max('id');
 
 
-        dd($max_id);
+
 
 
 
@@ -120,6 +120,10 @@ class ViskositasController extends Controller
 
 
         $f0 = $kecepatanMotor->w * 0.016667;
+
+
+        dd($f0);
+
 
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
