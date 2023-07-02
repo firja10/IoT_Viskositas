@@ -86,6 +86,7 @@ class ViskositasController extends Controller
     $visRef = $request->vis_ref;
     $refErrorVis = $request->ref_error_vis;
     $delay = $request->delay;
+    $errorVis = $request->error_vis;
 
 
 
@@ -93,7 +94,7 @@ class ViskositasController extends Controller
 
         $viskos = new Viskositas();
         $viskos->vis_ref = $visRef;
-        $viskos->error_vis = 0;
+        $viskos->error_vis = $errorVis;
         $viskos->ref_error_vis = $refErrorVis;
 
         $f = $wSud * 0.016667;
