@@ -113,6 +113,8 @@ class ViskositasController extends Controller
 
         $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $max_id)->first();
 
+
+
         $f0 = $kecepatanMotor->w;
 
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
