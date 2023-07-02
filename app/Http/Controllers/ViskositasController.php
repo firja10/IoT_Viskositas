@@ -116,7 +116,7 @@ class ViskositasController extends Controller
 
 
 
-        $f0 = $kecepatanMotor->w;
+        $f0 = $kecepatanMotor->w * 0.016667;
 
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
