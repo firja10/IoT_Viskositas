@@ -292,7 +292,7 @@ setInterval(function() {
                 // Update the Flot chart with the new data
                 // $.plot("#data_kecepatan_motor", [motor_data1, motor_data2],
 
-                $.plot("#data_kecepatan_motor_sesudah", [Vis_data1],
+                $.plot("#data_kecepatan_motor_sesudah", [SpeedAfter_data1],
 
                 // $.plot("#data_kecepatan_motor", [floatData, floatData2],
                 {
