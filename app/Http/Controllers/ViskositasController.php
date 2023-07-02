@@ -121,6 +121,9 @@ class ViskositasController extends Controller
 
             $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
+            dd($acuan);
+
+
         } elseif($status_visko == 2) { // Curah
 
             $acuan = rand(0.04480, 0.0450);
@@ -136,7 +139,7 @@ class ViskositasController extends Controller
 
 
 
-        dd($acuan);
+
 
 
 
