@@ -36,7 +36,7 @@ Route::get('/kecepatan_motor', function () {
 
 Route::get('/data_kecepatan_motor', [App\Http\Controllers\KecepatanMotorDcController::class, 'index'])->name('data_kecepatan_motor');
 
-Route::get('/data_kecepatan_motor_sesudah', [App\Http\Controllers\KecepatanMotorDcSesudahController::class, 'index'])->name('data_kecepatan_motor_sesudah');
+Route::get('/data_kecepatan_motor_sesudah', [App\Http\Controllers\KecepatanMotorDCSesudahController::class, 'index'])->name('data_kecepatan_motor_sesudah');
 
 Route::get('/data_kuat_arus', [App\Http\Controllers\KuatArusMotorDcController::class, 'index'])->name('data_kuat_arus');
 Route::get('/data_tegangan', [App\Http\Controllers\TeganganMotorDcController::class, 'index'])->name('data_tegangan');
