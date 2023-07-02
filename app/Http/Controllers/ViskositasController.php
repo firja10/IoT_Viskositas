@@ -114,7 +114,7 @@ class ViskositasController extends Controller
         $status_visko = $request->status_visko;
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
-        dd($vis);
+        dd(rand(0.04744, 0.0476));
 
 
         if ($status_visko == 1) { // Sanco
