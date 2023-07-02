@@ -115,15 +115,16 @@ class ViskositasController extends Controller
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
 
-        $angkaFloat = 0.04744 + mt_rand() / mt_getrandmax() * (0.0476 - 0.04744);
 
 
-        dd($angkaFloat);
 
 
         if ($status_visko == 1) { // Sanco
             # code...
-            $acuan = rand(0.04744, 0.0476);
+
+            $angkaFloat = 0.04744 + mt_rand() / mt_getrandmax() * (0.0476 - 0.04744);
+
+            $acuan = $angkaFloat;
 
             $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
@@ -132,7 +133,9 @@ class ViskositasController extends Controller
 
         } elseif($status_visko == 2) { // Curah
 
-            $acuan = rand(0.04480, 0.0450);
+            $angkaFloat = 0.04480 + mt_rand() / mt_getrandmax() * (0.0450 - 0.04480);
+
+            $acuan = $angkaFloat;
 
             $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
