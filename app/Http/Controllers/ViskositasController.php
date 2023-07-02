@@ -159,7 +159,7 @@ class ViskositasController extends Controller
 
 
 
-        kuat_arus_motor_dc::where('i',$i)->update([
+        kuat_arus_motor_dc::where('id',$max_id)->update([
             'i'=>$i_new,
         ]);
 
