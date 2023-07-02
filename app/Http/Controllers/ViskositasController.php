@@ -87,28 +87,46 @@ class ViskositasController extends Controller
     $refErrorVis = $request->ref_error_vis;
     $delay = $request->delay;
 
-    $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->first();
 
-    if ($kecepatanMotor) {
-        $viskos = Viskositas::where('id', $kecepatanMotor->id)->first();
 
-        if (!$viskos) {
-            $viskos = new Viskositas();
-            $viskos->id = $kecepatanMotor->id;
-        }
 
+
+        $viskos = new Viskositas();
         $viskos->vis_ref = $visRef;
         $viskos->error_vis = 0;
         $viskos->ref_error_vis = $refErrorVis;
 
         $f = $wSud * 0.016667;
+
+
+
+
+
+        $viskos->save();
+
+
+
+        $max_id = Viskositas::max('id');
+
+
+
+
+        $kecepatanMotor = DB::table('kecepatan_motor_dcs')->where('delay', $delay)->where('id', $max_id)->first();
+
         $f0 = $kecepatanMotor->w;
 
         $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
-        $viskos->vis = $vis;
 
-        $viskos->save();
-    }
+        Viskositas::where('id', $max_id)->update([
+        
+            'vis'=> $vis,
+        
+        ]);
+
+
+
+
+
         
 
 
