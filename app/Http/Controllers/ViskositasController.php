@@ -108,7 +108,7 @@ class ViskositasController extends Controller
 
 
 
-        elseif($status_visko == 4) { // Air
+        elseif($status_visko == 4) { // Oli
 
             $angkaFloat = 0.09799 + mt_rand() / mt_getrandmax() * (0.112 - 0.09799);
 
