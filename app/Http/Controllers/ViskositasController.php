@@ -79,10 +79,13 @@ class ViskositasController extends Controller
         if ($status_visko == 1) { // Sanco
             # code...
 
+            $angkaVoltage = 17.12 + mt_rand() / mt_getrandmax() * (18.320 - 17.12);
+
             $angkaFloat = 0.04744 + mt_rand() / mt_getrandmax() * (0.0476 - 0.04744);
             $acuan = $angkaFloat;
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
+            // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
 
         } elseif($status_visko == 2) { // Curah
 
