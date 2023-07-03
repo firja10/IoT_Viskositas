@@ -184,7 +184,7 @@ class ViskositasController extends Controller
 
 
 
-        return 'RPM :' . $angkaVoltage .'\n' . 'Current: ' . $i_new . '\n' . 'RPM:' . $f; 
+        return 'RPM :' . $angkaVoltage .' ' . 'Current: ' . $i_new . '' . 'RPM:' . $f; 
 
 
 
