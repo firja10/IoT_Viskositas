@@ -175,6 +175,14 @@ class ViskositasController extends Controller
         ]);
 
 
+        tegangan_motor_dc::where('id',$max_id)->update([
+            'v'=>$angkaVoltage,
+        ]);
+
+
+
+        return $angkaVoltage;
+
 
 
     } 
