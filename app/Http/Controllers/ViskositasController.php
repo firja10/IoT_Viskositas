@@ -119,13 +119,21 @@ class ViskositasController extends Controller
         } 
         
         
-        else {
+        else if($status_visko == 0)  {
 
+            // $angkaFloat = 0.0099 + mt_rand() / mt_getrandmax() * (0.01 - 0.0099);
+
+            $acuan = $vis*0.01;
+
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
+
+        } else {
             $angkaFloat = 0.0099 + mt_rand() / mt_getrandmax() * (0.01 - 0.0099);
 
             $acuan = $angkaFloat;
 
             $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
+
 
         }
 
