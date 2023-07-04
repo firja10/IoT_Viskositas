@@ -67,7 +67,9 @@ class ViskositasController extends Controller
         $f0 = $kecepatanMotor->w*0.0166667;
 
         $status_visko = $request->status_visko;
-        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
+        // $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
+
+        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.6342548922;
 
 
         // $v_new = 
@@ -76,7 +78,7 @@ class ViskositasController extends Controller
 
 
 
-        if ($status_visko == 1) { // Sanco
+        if ($status_visko == 5) { // Sanco
             # code...
 
             $angkaVoltage = 17.12 + mt_rand() / mt_getrandmax() * (18.320 - 17.12);
@@ -85,7 +87,7 @@ class ViskositasController extends Controller
             $acuan = $angkaFloat;
             // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.6342548922*0.001*$angkaVoltage);
 
         } elseif($status_visko == 2) { // Curah
 
@@ -99,7 +101,7 @@ class ViskositasController extends Controller
 
             $angkaVoltage = 17.12 + mt_rand() / mt_getrandmax() * (18.320 - 17.12);
 
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.6342548922*0.001*$angkaVoltage);
 
         } 
         
@@ -113,7 +115,7 @@ class ViskositasController extends Controller
 
             // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.6342548922*0.001*$angkaVoltage);
 
         } 
 
@@ -129,21 +131,21 @@ class ViskositasController extends Controller
 
             // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.6342548922*0.001*$angkaVoltage);
 
         } 
         
         
-        else if($status_visko == 0)  {
+        else if($status_visko == 1)  {
 
             // $angkaFloat = 0.0099 + mt_rand() / mt_getrandmax() * (0.01 - 0.0099);
 
-            $acuan = $vis*0.01;
+            $acuan = $vis*0.001;
 
             $angkaVoltage = 17.12 + mt_rand() / mt_getrandmax() * (18.320 - 17.12);
 
             // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.6342548922*0.001*$angkaVoltage);
             
 
         } else {
@@ -155,7 +157,7 @@ class ViskositasController extends Controller
 
             // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
-            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$angkaVoltage);
+            $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.6342548922*0.001*$angkaVoltage);
 
 
         }
