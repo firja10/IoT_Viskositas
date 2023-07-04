@@ -69,7 +69,7 @@ class ViskositasController extends Controller
         $status_visko = $request->status_visko;
         // $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.0671;
 
-        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.6342548922;
+        $vis = (($v * $i) / (8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)) * 0.6342548922*0.001;
 
 
         // $v_new = 
