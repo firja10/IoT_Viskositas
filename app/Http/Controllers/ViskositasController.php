@@ -153,7 +153,8 @@ class ViskositasController extends Controller
 
             $angkaVoltage = 17.12 + mt_rand() / mt_getrandmax() * (18.320 - 17.12);
 
-            $acuan = $angkaFloat;
+            #$acuan = $angkaFloat;
+            $acuan = $vis;
 
             // $i_new = ($acuan*(8 * 3.14 * 3.14 * 3.14 * $f * $f0 * 0.15)/0.0671*$v);
 
